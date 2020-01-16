@@ -60,7 +60,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="min-h-screen flex flex-col bg-black text-white">
         <TodoList
           handleToggleTodoCompleted={this.handleToggleTodoCompleted}
           todos={this.state.todos}
