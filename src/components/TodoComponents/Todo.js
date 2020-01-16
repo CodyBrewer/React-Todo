@@ -6,7 +6,7 @@ const Todo = props => {
     classes.push("hidden");
   }
   if (props.todo.completed) {
-    classes.push("line-through");
+    classes.push("line-through", "bg-red-500");
   }
 
   return (

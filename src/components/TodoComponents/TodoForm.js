@@ -2,7 +2,7 @@ import React from "react";
 
 const TodoForm = props => {
   return (
-    <form className="flex flex-col">
+    <form className="flex flex-col w-1/2">
       <input
         className="text-black"
         onChange={props.handleChangeTodo}
@@ -20,7 +20,7 @@ const TodoForm = props => {
         Add Todo
       </button>
       <button
-        className="bg-green-800"
+        className="bg-green-300"
         onClick={props.handleClearCompletedTodos}
       >
         Clear Completed

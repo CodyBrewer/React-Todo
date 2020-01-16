@@ -28,7 +28,7 @@ class TodoSearch extends Component {
 
   render() {
     return (
-      <form onSubmit={this.onSearch}>
+      <form className="flex flex-col w-1/2" onSubmit={this.onSearch}>
         <input
           className="text-black"
           type="search"

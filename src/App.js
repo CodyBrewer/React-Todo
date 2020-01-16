@@ -89,19 +89,21 @@ class App extends React.Component {
   render() {
     return (
       <div className="min-h-screen flex flex-col bg-black text-white">
-        <TodoSearch
-          searchTodos={this.searchTodos}
-          clearSearchFilter={this.clearSearchFilter}
-        />
+        <div className="flex w-full my-2">
+          <TodoSearch
+            searchTodos={this.searchTodos}
+            clearSearchFilter={this.clearSearchFilter}
+          />
+          <TodoForm
+            value={this.state.todo}
+            handleChangeTodo={this.handleChangeTodo}
+            handleAddTodo={this.handleAddTodo}
+            handleClearCompletedTodos={this.handleClearCompletedTodos}
+          />
+        </div>
         <TodoList
           handleToggleTodoCompleted={this.handleToggleTodoCompleted}
           todos={this.state.todos}
-        />
-        <TodoForm
-          value={this.state.todo}
-          handleChangeTodo={this.handleChangeTodo}
-          handleAddTodo={this.handleAddTodo}
-          handleClearCompletedTodos={this.handleClearCompletedTodos}
         />
       </div>
     );
