@@ -10,28 +10,26 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      todos: [
-        {
-          task: "Organize Garage",
-          id: 1528817077286,
-          completed: false
-        },
-        {
-          task: "Bake Cookies",
-          id: 1528817084358,
-          completed: false
-        }
-      ],
+      todos: this.grabLocalStorageTodos(),
       todo: ""
     };
   }
 
+  grabLocalStorageTodos = () => {
+    const localStorageTodos = localStorage.getItem("todos");
+    if (localStorageTodos) {
+      return JSON.parse(localStorageTodos);
+    }
+    return [];
+  };
+
   handleAddTodo = e => {
     e.preventDefault();
     const newTodo = { task: this.state.todo, completed: false, id: Date.now() };
-    this.setState({
-      todos: [...this.state.todos, newTodo],
-      todo: ""
+    this.setState(prevState => {
+      const newTodos = [...prevState.todos, newTodo];
+      localStorage.setItem("todos", JSON.stringify(newTodos));
+      return { todos: [...prevState.todos, newTodo], todo: "" };
     });
   };
 
@@ -48,12 +46,14 @@ class App extends React.Component {
       }
     });
     this.setState({ todos });
+    localStorage.setItem("todos", JSON.stringify(this.state.todos));
   };
 
   handleClearCompletedTodos = e => {
     e.preventDefault();
     this.setState(prevState => {
       const updatedTodos = prevState.todos.filter(el => !el.completed);
+      localStorage.setItem("todos", JSON.stringify(updatedTodos));
       return { todos: updatedTodos };
     });
   };
