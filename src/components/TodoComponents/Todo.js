@@ -5,8 +5,8 @@ const Todo = props => {
     <div
       className={
         props.todo.completed
-          ? "line-through bg-red-600 border-blue-300 border-2"
-          : "no-underline bg-green-500 border-blue-300 border-2"
+          ? "line-through bg-red-600 my-1"
+          : "no-underline bg-teal-500 my-1"
       }
       onClick={() => props.handleToggleTodoCompleted(props.todo.id)}
     >
